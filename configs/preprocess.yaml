@@ -3,6 +3,10 @@ read_dir:
   patch: '/home/workstaion/workspace/potatochips/midog/data/patches'
   json: '/home/workstaion/workspace/potatochips/midog/data/MIDOG2022_training.json'
 
+write_dir:
+  image: '/home/workstaion/workspace/potatochips/midog/data/patches'
+  json: '/home/workstaion/workspace/potatochips/midog/data/json/training.json'
+
 size:
   step: 512
   patch: 512
