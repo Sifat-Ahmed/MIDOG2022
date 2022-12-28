@@ -26,7 +26,7 @@ midog
 │   ├── contains all the saved files of the model                           
 ├── preprocess.py                           
 ├── train.py                           
-├── readme.md                           
+├── README.md                           
 ├── requirements.txt                    
                             
 ```
