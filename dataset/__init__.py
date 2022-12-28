@@ -1,1 +1,1 @@
-from dataset.dataloader import CocoDataset, Augmenter, collater, Resizer, AspectRatioBasedSampler, Normalizer
+from dataset.dataset import CocoDataset, Augmenter, collater, Resizer, AspectRatioBasedSampler, Normalizer

@@ -8,8 +8,24 @@ midog
 │   ├── preprocess.yaml                     
 │   ├── train.yaml                       
 ├── data (ignored in .gitignore)                    
-│   ├── directory for images and json files                     
-├── retinanet                            
+│   ├── directory for images and json files
+├── dataset
+│   ├── __init__.py
+│   ├── dataset.py                       
+│   ├── utils.py
+├── outputs (ignored in .gitignore)
+│   ├── directory for hydra logs                       
+├── retinanet
+│   ├── __init__.py
+│   ├── anchors.py
+│   ├── coco_eval.py
+│   ├── losses.py
+│   ├── model.py
+│   ├── utils.py                            
+├── runs (ignored in .gitignore)
+│   ├── contains all the saved files of the model                           
+├── preprocess.py                           
+├── train.py                           
 ├── readme.md                           
 ├── requirements.txt                    
                             
