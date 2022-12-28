@@ -1,0 +1,55 @@
+dataset:
+  ## this is the name of the dataset
+  dataset_name: 'coco'
+  ## root path of the dataset, images folder contains all the images
+  dataset_root: 'data'
+  ## name of the json file for training. It should be inside the root folder
+  train_json: 'training.json'
+  ## name of the validation json file. It should be inside the root folder
+  val_json: 'training.json'
+
+model:
+  ## These are the parameters for classification head
+  classification:
+    ## for classification, the backbone that is used is ResNet,
+    ## from the variable below, you can set the depth of resnet. It must be one of 18, 34, 50, 101, 152'
+    depth: 50
+
+    ## number classes has been set based on the number of categories in the dataset
+    ## mitotic figure and non-mitotic figure
+    num_classes: 2
+
+    ## this value is to use the pretrained model for resnet
+    ## possible values are "online", "offline", "none"
+    ## if offline then, local weight files needed
+    pretrained: 'online'
+
+    ## path for the resnet weights
+    path_to_pretrained: ''
+
+  obj_det: ''
+
+output:
+  ## this contains the directory for saving the model
+  save_dir:
+    ## for resnet/classification model
+    classification:
+      model_path: ''
+    ## for object detection model
+    obj_det:
+      model_path: ''
+
+  ## only save the best weights for both models
+  save_best_only: true
+  use_wandb: true
+
+## general parameters for training the model
+training:
+  ## number of epochs for the model to be trained
+  epochs: 10
+  ## mini batch size
+  batch_size: 48
+  ## number of workers for data loaders
+  num_workers: 4
+  ## pin to the memory
+  pin_memory: true
