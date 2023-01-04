@@ -34,10 +34,10 @@ output:
   save_dir:
     ## for resnet/classification model
     classification:
-      model_path: ''
+      model_path: 'runs/classification'
     ## for object detection model
     obj_det:
-      model_path: ''
+      model_path: 'runs/obj_det'
 
   ## only save the best weights for both models
   save_best_only: true
@@ -53,3 +53,6 @@ training:
   num_workers: 4
   ## pin to the memory
   pin_memory: true
+  ## gpu usage
+  use_gpu: true
+  ## weights save directory

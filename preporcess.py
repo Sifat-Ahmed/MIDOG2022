@@ -30,6 +30,9 @@ def main(cfg):
     with open(cfg.read_dir.json, 'r') as f:
         coco = json.load(f)
 
+    print("This source code is for creating image slices and training and validation sets.")
+    print("Loaded preprocess.yaml", "\n", cfg)
+
     coco_images, coco_anns = coco['images'], coco['annotations']
     num_images, num_anns = len(coco_images), len(coco_anns)
     images, annotations = list(), list()
@@ -107,7 +110,7 @@ def main(cfg):
                     )
             cv2.imwrite(os.path.join(cfg.write_dir.image, '{}_{}_{}.png'.format(i + 1, cx, cy)), slice)
 
-            
+
 
     coco.update({"info": {"description": "MItosis Domain Generalization Challenge (MIDOG) 2022 - Training set",
                           "version": "1.0", "year": 2022,
