@@ -1,9 +1,9 @@
 from pycocotools.cocoeval import COCOeval
 import json
 import torch
+from tqdm.auto import tqdm
 
-
-def evaluate_coco(dataset, model, threshold=0.05):
+def evaluate_coco(epoch, cfg, dataset, model, threshold=0.05):
     
     model.eval()
     
@@ -13,15 +13,14 @@ def evaluate_coco(dataset, model, threshold=0.05):
         results = []
         image_ids = []
 
-        for index in range(len(dataset)):
+        for index in tqdm(range(len(dataset)), leave=True, colour='red', position=0, desc='Evaluating on test data'):
             data = dataset[index]
             scale = data['scale']
 
             # run network
-            if torch.cuda.is_available():
-                scores, labels, boxes = model(data['img'].permute(2, 0, 1).cuda().float().unsqueeze(dim=0))
-            else:
-                scores, labels, boxes = model(data['img'].permute(2, 0, 1).float().unsqueeze(dim=0))
+
+            scores, labels, boxes = model(data['img'].permute(2, 0, 1).cuda().float().unsqueeze(dim=0))
+
             scores = scores.cpu()
             labels = labels.cpu()
             boxes  = boxes.cpu()
@@ -59,8 +58,6 @@ def evaluate_coco(dataset, model, threshold=0.05):
             # append image to list of processed images
             image_ids.append(dataset.image_ids[index])
 
-            # print progress
-            print('{}/{}'.format(index, len(dataset)), end='\r')
 
         if not len(results):
             return

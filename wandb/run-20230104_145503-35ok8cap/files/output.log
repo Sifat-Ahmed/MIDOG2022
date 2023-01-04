@@ -1,0 +1,433 @@
+dataset:
+  name: coco
+  root: /home/workstaion/workspace/potatochips/midog/data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to ./resnet50-19c8e357.pth
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [00:01<00:00, 75.5MB/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch: 1/10 | Batch: 856 | C_loss: 0.15 | R_loss: 0.04 | Running loss: 0.30: 100%|[32m███████████████████████████████████████████████████████████████[39m| 857/857 [12:47<00:00,  1.12it/s]
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "train.py", line 129, in main
+    train(cfg)
+  File "train.py", line 111, in train
+    "Claasification Loss": epoch_classification_loss / len(epoch_classification_loss),
+TypeError: unsupported operand type(s) for /: 'list' and 'int'
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

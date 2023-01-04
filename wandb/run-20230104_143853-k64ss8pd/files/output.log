@@ -1,0 +1,36 @@
+dataset:
+  dataset_name: coco
+  dataset_root: data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "train.py", line 133, in main
+    train(cfg)
+  File "train.py", line 19, in train
+    dataset_train = CocoDataset(cfg.dataset_root, set_name='training.json',
+omegaconf.errors.ConfigAttributeError: Key 'dataset_root' is not in struct
+    full_key: dataset_root
+    object_type=dict
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

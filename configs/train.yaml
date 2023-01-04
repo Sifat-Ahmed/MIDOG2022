@@ -1,8 +1,8 @@
 dataset:
   ## this is the name of the dataset
-  dataset_name: 'coco'
+  name: 'coco'
   ## root path of the dataset, images folder contains all the images
-  dataset_root: 'data'
+  root: '/home/workstaion/workspace/potatochips/midog/data'
   ## name of the json file for training. It should be inside the root folder
   train_json: 'training.json'
   ## name of the validation json file. It should be inside the root folder

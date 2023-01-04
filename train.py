@@ -1,6 +1,6 @@
 import warnings
 warnings.filterwarnings('ignore')
-import hydra, wandb, collections
+import hydra, wandb, collections, os
 from omegaconf import OmegaConf
 wandb.init(project="MIDOG2022")
 import numpy as np
@@ -16,9 +16,9 @@ from tqdm.auto import tqdm
 
 
 def train(cfg):
-    dataset_train = CocoDataset(cfg.dataset_root, set_name='training.json',
+    dataset_train = CocoDataset(cfg.dataset.root, set_name='training.json',
                                 transform=transforms.Compose([Normalizer(), Augmenter(), Resizer()]))
-    dataset_val = CocoDataset(cfg.dataset_root, set_name='training.json',
+    dataset_val = CocoDataset(cfg.dataset.root, set_name='training.json',
                               transform=transforms.Compose([Normalizer(), Resizer()]))
 
     sampler = AspectRatioBasedSampler(dataset_train, batch_size=24, drop_last=False)
@@ -29,16 +29,16 @@ def train(cfg):
         dataloader_val = DataLoader(dataset_val, num_workers=3, collate_fn=collater, batch_sampler=sampler_val)
 
     # Create the model
-    if cfg.model.depth == 18:
-        retinanet = model.resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif cfg.model.depth == 34:
-        retinanet = model.resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif cfg.model.depth == 50:
-        retinanet = model.resnet50(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif cfg.model.depth == 101:
-        retinanet = model.resnet101(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif cfg.model.depth == 152:
-        retinanet = model.resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
+    if cfg.model.classification.depth == 18:
+        retinanet = model.resnet18(num_classes=cfg.model.classification.num_classes, pretrained=True)
+    elif cfg.model.classification.depth == 34:
+        retinanet = model.resnet34(num_classes=cfg.model.classification.num_classes, pretrained=True)
+    elif cfg.model.classification.depth == 50:
+        retinanet = model.resnet50(num_classes=cfg.model.classification.num_classes, pretrained=True)
+    elif cfg.model.classification.depth == 101:
+        retinanet = model.resnet101(num_classes=cfg.model.classification.num_classes, pretrained=True)
+    elif cfg.model.classification.depth == 152:
+        retinanet = model.resnet152(num_classes=cfg.model.classification.num_classes, pretrained=True)
     else:
         raise ValueError('Unsupported model depth, must be one of 18, 34, 50, 101, 152')
 
@@ -50,10 +50,12 @@ def train(cfg):
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, patience=3, verbose=True)
     loss_hist = collections.deque(maxlen=500)
 
+    retinanet.train()
+    retinanet.freeze_bn()
     for epoch_num in range(cfg.training.epochs):
 
         retinanet.train()
-        retinanet.module.freeze_bn()
+        retinanet.freeze_bn()
 
         epoch_loss = []
         epoch_classification_loss = list()
@@ -65,11 +67,7 @@ def train(cfg):
         for iter_num, data in enumerate(pbar):
             try:
                 optimizer.zero_grad()
-
-                if torch.cuda.is_available():
-                    classification_loss, regression_loss = retinanet([data['img'].cuda().float(), data['annot']])
-                else:
-                    classification_loss, regression_loss = retinanet([data['img'].float(), data['annot']])
+                classification_loss, regression_loss = retinanet([data['img'].cuda().float(), data['annot'].cuda()])
 
                 classification_loss = classification_loss.mean()
                 regression_loss = regression_loss.mean()
@@ -88,9 +86,7 @@ def train(cfg):
                 torch.nn.utils.clip_grad_norm_(retinanet.parameters(), 0.1)
 
                 optimizer.step()
-
                 loss_hist.append(float(loss))
-
                 epoch_loss.append(float(loss))
 
                 wandb.log({
@@ -100,8 +96,8 @@ def train(cfg):
                 })
 
                 pbar.set_description(
-                    'Epoch: {}/{} | Batch: {} | C_loss: {:1.2f} | R_loss: {:1.2f} | Running loss: {:1.2f}'.format(
-                        epoch_num + 1, cfg.training.epochs, iter_num, float(classification_loss), float(regression_loss),
+                    'Epoch: {}/{} |  C_loss: {:1.2f} | R_loss: {:1.2f} | Running loss: {:1.2f}'.format(
+                        epoch_num + 1, cfg.training.epochs, float(classification_loss), float(regression_loss),
                         np.mean(loss_hist)))
 
                 del classification_loss
@@ -112,26 +108,25 @@ def train(cfg):
                 continue
         wandb.log({
             "Epoch": epoch_num + 1,
-            "Claasification Loss": epoch_classification_loss / len(epoch_classification_loss),
-            "Regression Loss": epoch_regression_loss / len(epoch_regression_loss),
-            "Running Loss": total_epoch_loss / len(total_epoch_loss),
+            "Claasification Loss": sum(epoch_classification_loss) / len(epoch_classification_loss),
+            "Regression Loss": sum(epoch_regression_loss) / len(epoch_regression_loss),
+            "Running Loss": sum(total_epoch_loss) / len(total_epoch_loss),
         })
 
 
 
-        coco_eval.evaluate_coco(dataset_val, retinanet)
+        coco_eval.evaluate_coco(epoch_num, cfg, dataset_val, retinanet)
         scheduler.step(np.mean(epoch_loss))
 
-        torch.save(retinanet.module, '{}_retinanet_{}.pt'.format(parser.dataset, epoch_num))
+        torch.save(retinanet, os.path.join(cfg.output.save_dir.classification.model_path, '{}_retinanet_{}.pt'.format(cfg.dataset.name, epoch_num)))
 
     retinanet.eval()
-
-    torch.save(retinanet, 'model_final.pt')
+    torch.save(retinanet, os.path.join(cfg.output.save_dir.classification.model_path, 'model_final.pt'))
 
 @hydra.main(config_path='configs', config_name='train')
 def main(cfg):
     print(OmegaConf.to_yaml(cfg))
-
+    train(cfg)
 
 if __name__ == "__main__":
     main()

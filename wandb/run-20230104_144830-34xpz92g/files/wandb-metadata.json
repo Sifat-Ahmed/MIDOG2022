@@ -1,0 +1,125 @@
+{
+    "os": "Linux-5.15.0-56-generic-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2023-01-04T05:48:31.681173",
+    "startedAt": "2023-01-04T05:48:30.826575",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/Sifat-Ahmed/MIDOG2022.git",
+        "commit": "67597a37576e76f4aaf639456615218c1b109d38"
+    },
+    "email": "sifat.ahmed@eii-net.co.jp",
+    "root": "/home/workstaion/workspace/potatochips/midog",
+    "host": "eii",
+    "username": "workstation",
+    "executable": "/home/workstaion/anaconda3/envs/pytorch/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3426.1671875,
+        "min": 800.0,
+        "max": 5000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 2331.189,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 800.039,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 800.004,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        },
+        {
+            "current": 3600.0,
+            "min": 800.0,
+            "max": 5000.0
+        }
+    ],
+    "disk": {
+        "total": 915.3232879638672,
+        "used": 410.76631927490234
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 62.72614669799805
+    }
+}

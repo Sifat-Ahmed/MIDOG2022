@@ -1,0 +1,39 @@
+dataset:
+  name: coco
+  root: data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+loading annotations into memory...
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "train.py", line 133, in main
+    train(cfg)
+  File "train.py", line 19, in train
+    dataset_train = CocoDataset(cfg.dataset.root, set_name='training.json',
+  File "/home/workstaion/workspace/potatochips/midog/dataset/dataset.py", line 28, in __init__
+    self.coco = COCO(os.path.join(self.root_dir, set_name))
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/pycocotools/coco.py", line 84, in __init__
+    with open(annotation_file, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/training.json'
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

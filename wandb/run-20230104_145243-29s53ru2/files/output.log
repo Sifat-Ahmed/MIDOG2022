@@ -1,0 +1,195 @@
+dataset:
+  name: coco
+  root: /home/workstaion/workspace/potatochips/midog/data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to ./resnet50-19c8e357.pth
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [00:01<00:00, 62.3MB/s]
+  0%|[32m                                                                                                                                                      [39m| 0/857 [00:00<?, ?it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  0%|[32m▍                                                                                                                                             [39m| 3/857 [00:03<12:34,  1.13it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  1%|[32m█▍                                                                                                                                            [39m| 9/857 [00:05<04:55,  2.87it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  2%|[32m██▍                                                                                                                                          [39m| 15/857 [00:07<04:46,  2.94it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  2%|[32m███▎                                                                                                                                         [39m| 20/857 [00:09<05:04,  2.75it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  3%|[32m████                                                                                                                                         [39m| 25/857 [00:11<05:36,  2.48it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  4%|[32m█████                                                                                                                                        [39m| 31/857 [00:13<05:17,  2.60it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  4%|[32m█████▉                                                                                                                                       [39m| 36/857 [00:15<04:32,  3.02it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  5%|[32m██████▉                                                                                                                                      [39m| 42/857 [00:17<04:56,  2.75it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  5%|[32m███████▋                                                                                                                                     [39m| 47/857 [00:19<05:00,  2.70it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  6%|[32m████████▍                                                                                                                                    [39m| 51/857 [00:21<04:54,  2.73it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  7%|[32m█████████▍                                                                                                                                   [39m| 57/857 [00:23<04:47,  2.78it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  7%|[32m██████████▎                                                                                                                                  [39m| 63/857 [00:25<04:28,  2.95it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  8%|[32m███████████                                                                                                                                  [39m| 67/857 [00:27<05:46,  2.28it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  9%|[32m████████████                                                                                                                                 [39m| 73/857 [00:29<05:22,  2.43it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+  9%|[32m████████████▊                                                                                                                                [39m| 78/857 [00:31<04:51,  2.68it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+
+ 10%|[32m█████████████▋                                                                                                                               [39m| 83/857 [00:33<04:52,  2.64it/s]
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+ 10%|[32m██████████████▏                                                                                                                              [39m| 86/857 [00:34<04:38,  2.77it/s]Traceback (most recent call last):
+Traceback (most recent call last):
+ 10%|[32m██████████████▏                                                                                                                              [39m| 86/857 [00:34<05:11,  2.47it/s]
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/queues.py", line 245, in _feed
+    send_bytes(obj)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/queues.py", line 245, in _feed
+    send_bytes(obj)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+Traceback (most recent call last):
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 411, in _send_bytes
+    self._send(header + buf)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 411, in _send_bytes
+    self._send(header + buf)
+  File "train.py", line 132, in <module>
+    main()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/main.py", line 90, in decorated_main
+    _run_hydra(
+BrokenPipeError: [Errno 32] Broken pipe
+BrokenPipeError: [Errno 32] Broken pipe
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 389, in _run_hydra
+    _run_app(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 452, in _run_app
+    run_and_report(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 213, in run_and_report
+    return func()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 453, in <lambda>
+    lambda: hydra.run(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "train.py", line 129, in main
+    train(cfg)
+  File "train.py", line 70, in train
+    classification_loss, regression_loss = retinanet([data['img'].cuda().float(), data['annot']])
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/workstaion/workspace/potatochips/midog/retinanet/model.py", line 254, in forward
+    anchors = self.anchors(img_batch)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1051, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/workstaion/workspace/potatochips/midog/retinanet/anchors.py", line 38, in forward
+    return torch.from_numpy(all_anchors.astype(np.float32)).cuda()
+KeyboardInterrupt

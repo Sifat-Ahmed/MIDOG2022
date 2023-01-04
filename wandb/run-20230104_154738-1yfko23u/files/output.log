@@ -1,0 +1,100 @@
+dataset:
+  name: coco
+  root: /home/workstaion/workspace/potatochips/midog/data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+loading annotations into memory...
+Done (t=0.06s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+loading annotations into memory...
+Done (t=0.06s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to ./resnet50-19c8e357.pth
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [00:01<00:00, 76.9MB/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch: 1/10 | Batch: 71 | C_loss: 0.66 | R_loss: 0.62 | Running loss: 1.44:   8%|[32m█████▍                                                           [39m| 72/857 [01:08<12:31,  1.04it/s]
+Traceback (most recent call last):
+  File "train.py", line 132, in <module>
+    main()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/main.py", line 90, in decorated_main
+    _run_hydra(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 389, in _run_hydra
+    _run_app(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 452, in _run_app
+    run_and_report(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 213, in run_and_report
+    return func()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 453, in <lambda>
+    lambda: hydra.run(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "train.py", line 129, in main
+    train(cfg)
+  File "train.py", line 86, in train
+    torch.nn.utils.clip_grad_norm_(retinanet.parameters(), 0.1)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/nn/utils/clip_grad.py", line 43, in clip_grad_norm_
+    if total_norm.isnan() or total_norm.isinf():
+KeyboardInterrupt

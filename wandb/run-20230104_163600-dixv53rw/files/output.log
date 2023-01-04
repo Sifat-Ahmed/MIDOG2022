@@ -1,0 +1,508 @@
+dataset:
+  name: coco
+  root: /home/workstaion/workspace/potatochips/midog/data
+  train_json: training.json
+  val_json: training.json
+model:
+  classification:
+    depth: 50
+    num_classes: 2
+    pretrained: online
+    path_to_pretrained: ''
+  obj_det: ''
+output:
+  save_dir:
+    classification:
+      model_path: runs/classification
+    obj_det:
+      model_path: runs/obj_det
+  save_best_only: true
+  use_wandb: true
+training:
+  epochs: 10
+  batch_size: 48
+  num_workers: 4
+  pin_memory: true
+  use_gpu: true
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+loading annotations into memory...
+Done (t=0.05s)
+creating index...
+index created!
+classes {'mitotic figure': 0, 'not mitotic figure': 1}
+coco labels {0: 0, 1: 1}
+Inverser {0: 0, 1: 1}
+Downloading: "https://download.pytorch.org/models/resnet50-19c8e357.pth" to ./resnet50-19c8e357.pth
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 97.8M/97.8M [00:01<00:00, 80.5MB/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch: 1/10 |  C_loss: 0.20 | R_loss: 0.02 | Running loss: 0.31: 100%|[32m███████████████████████████████████████████████████████████████████████████[39m| 857/857 [12:54<00:00,  1.11it/s]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Evaluating on test data:   8%|[31m█████████                                                                                                       [39m| 1657/20552 [01:25<16:14, 19.40it/s]
+Traceback (most recent call last):
+  File "train.py", line 132, in <module>
+    main()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/main.py", line 90, in decorated_main
+    _run_hydra(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 389, in _run_hydra
+    _run_app(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 452, in _run_app
+    run_and_report(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 213, in run_and_report
+    return func()
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/utils.py", line 453, in <lambda>
+    lambda: hydra.run(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "train.py", line 129, in main
+    train(cfg)
+  File "train.py", line 118, in train
+    coco_eval.evaluate_coco(epoch_num, cfg, dataset_val, retinanet)
+  File "/home/workstaion/workspace/potatochips/midog/retinanet/coco_eval.py", line 17, in evaluate_coco
+    data = dataset[index]
+  File "/home/workstaion/workspace/potatochips/midog/dataset/dataset.py", line 64, in __getitem__
+    sample = self.transform(sample)
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/transforms/transforms.py", line 60, in __call__
+    img = t(img)
+  File "/home/workstaion/workspace/potatochips/midog/dataset/utils.py", line 67, in __call__
+    image = skimage.transform.resize(image, (int(round(rows * scale)), int(round((cols * scale)))))
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/skimage/transform/_warps.py", line 176, in resize
+    out = warp(image, tform, output_shape=output_shape, order=order,
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/skimage/transform/_warps.py", line 887, in warp
+    warped = np.dstack(dims)
+  File "<__array_function__ internals>", line 180, in dstack
+  File "/home/workstaion/anaconda3/envs/pytorch/lib/python3.8/site-packages/numpy/lib/shape_base.py", line 723, in dstack
+    return _nx.concatenate(arrs, 2)
+  File "<__array_function__ internals>", line 180, in concatenate
+KeyboardInterrupt
